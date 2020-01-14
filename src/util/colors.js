@@ -1,3 +1,6 @@
 export default {
-  default: '#3e5568',
+  default: '#ee4d64',
+  backgroundForm: '#fff',
+  cinzaClaro: '#eee',
+  cinzaEscuro: '#999',
 };
