@@ -106,3 +106,45 @@ edite-o e deixe da seguinte forma:
 ```
 
 E fim, tudo volta a funcionar perfeitamente :)
+
+## Validation
+
+Agora vamos validar os dados do formulário de Login, na página `SignIn`, edite-o, e deixe-o dessa forma:
+
+```jsx
+import React from 'react';
+import { Form, Input } from '@rocketseat/unform';
+import * as Yup from 'yup'; // importei o Yup
+import logo from '~/assets/images/logo.png';
+
+
+const schema = Yup.object().shape({ // Criei um schema, e algumas validações.
+  email: Yup.string()
+    .email('Digite um email válido')
+    .required(),
+  password: Yup.string().required('A senha é obrigatória'),
+});
+
+export default function SignIn() {
+  function handleSubmit({ email, password }) {
+    console.tron.log(email, password);
+  }
+  return (
+    <>
+      <img src={logo} alt="gympoint" />
+
+      <Form schema={schema} {/*Aqui eu passei omo parâmeytro do unform, pode ser estilizado como um span*/} onSubmit={handleSubmit} action="">
+        <Input name="email" type="email" placeholder="seu e-mail" />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Sua Senha secreta"
+        />
+
+        <button type="submit">Acessar</button>
+      </Form>
+    </>
+  );
+}
+// src/pages/SignIn/index.js
+```

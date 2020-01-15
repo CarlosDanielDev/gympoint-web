@@ -3,4 +3,5 @@ export default {
   backgroundForm: '#fff',
   cinzaClaro: '#eee',
   cinzaEscuro: '#999',
+  danger: '#f00',
 };
