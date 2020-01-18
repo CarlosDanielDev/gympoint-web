@@ -1,9 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import CircleLoader from 'react-spinners/CircleLoader';
 import logo from '~/assets/images/logo.png';
+import { signInRequest } from '~/store/modules/auth/actions';
 
-// import { Container } from './styles';
 const schema = Yup.object().shape({
   email: Yup.string()
     .email('Digite um email válido')
@@ -12,8 +14,11 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+
   function handleSubmit({ email, password }) {
-    console.tron.log(email, password);
+    dispatch(signInRequest(email, password));
   }
   return (
     <>
@@ -27,7 +32,15 @@ export default function SignIn() {
           placeholder="Sua Senha secreta"
         />
 
-        <button type="submit">Acessar</button>
+        <button type="submit">
+          {loading ? (
+            <center>
+              <CircleLoader size={25} color="#fff" loading />
+            </center>
+          ) : (
+            'Acessar'
+          )}
+        </button>
       </Form>
     </>
   );
