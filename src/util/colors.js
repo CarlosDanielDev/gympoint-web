@@ -4,4 +4,5 @@ export default {
   cinzaClaro: '#eee',
   cinzaEscuro: '#999',
   danger: '#f00',
+  name: '#333',
 };

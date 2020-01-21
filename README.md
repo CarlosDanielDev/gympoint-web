@@ -685,3 +685,121 @@ export default function auth(state = INITIAL_STATE, action) {
   });
 }
 ```
+
+## Erros
+
+Agotra vamos instalar um LIB pra lidar com erros e eibi-los de uma forma mais agradável para o usuário.
+
+```bash
+yarn add react-toastify
+```
+
+Agora com a lib instalada, dentro de `src/App.js`, coloque a seguinte configuração.
+
+```jsx
+import React from 'react';
+import { ToastContainer } from 'react-toastify'; // new
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+
+import './config/ReactotronConfig';
+import { store, persistor } from './store'; // deve vir depois da configuração do reactotron
+import Routes from './routes';
+import history from './services/history';
+import GlobalStyle from './styles/global';
+
+function App() {
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <Routes />
+          <GlobalStyle />
+          <ToastContainer autoClose={3000} /> {/* new */}
+        </Router>
+      </PersistGate>
+    </Provider>
+  );
+}
+
+export default App;
+```
+
+Agora vamos fazer umas pequenas mudanças no `saga` de autenticação.
+
+```jsx
+import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { toast } from 'react-toastify'; // new
+import history from '~/services/history';
+import api from '~/services/api';
+
+import { signInSuccess, signFailure } from './actions';
+
+export function* signIn({ payload }) {
+  try {
+    const { email, password } = payload;
+    // console.tron.log('entrou na SignIN');
+    const response = yield call(api.post, 'sessions', { email, password });
+    // console.tron.log('chamou a API');
+    const { token, user } = response.data;
+
+    yield put(signInSuccess(token, user));
+    history.push('/students');
+  } catch (error) {
+    toast.error('Falha na autenticação!'); // new
+    yield put(signFailure());
+  }
+}
+
+export default all([takeLatest('@auth/SIGN_IN_REQUEST', signIn)]);
+
+// src/store/modules/auth/sagas.js
+```
+
+Coloquei um `try/catch` por volta da request, qualquer erro ele cai no catch e exibe o erro :)
+
+## Request Autenticada!
+
+Vamos configurar o axios pra armazenar o token, para que todas as requests feitas pelo client sejam automaticamente autenticadas sem que eu me preocupe em recuperar o token e passar toda vez pelas requests.
+
+Dentro do saga de autenticação, faça as seguintes configurações.
+
+```jsx
+import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
+import history from '~/services/history';
+import api from '~/services/api';
+
+import { signInSuccess, signFailure } from './actions';
+
+export function* signIn({ payload }) {
+  try {
+    const { email, password } = payload;
+    // console.tron.log('entrou na SignIN');
+    const response = yield call(api.post, 'sessions', { email, password });
+    // console.tron.log('chamou a API');
+    const { token, user } = response.data;
+
+    yield put(signInSuccess(token, user));
+    history.push('/students');
+  } catch (error) {
+    toast.error('Falha na autenticação!');
+    yield put(signFailure());
+  }
+}
+
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) api.defaults.headers.Authorization = `Bearer ${token}`;
+}
+export default all([
+  takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  takeLatest('persist/REHYDRATE', setToken),
+]);
+```
+
+Eu acessei a propriedade `defaults` do axios, e dentro dos `headers`, setei o `Authorization` com o meu token.
