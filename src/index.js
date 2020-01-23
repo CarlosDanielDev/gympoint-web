@@ -1,5 +1,11 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
+import './services/i18n';
 
-render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Suspense fallback={<div>Loading...</div>}>
+    <App />
+  </Suspense>,
+  document.getElementById('root')
+);

@@ -1,0 +1,27 @@
+{
+  "alunos": {
+    "titulo": "Students",
+    "placeholders": {
+      "buscar": "Search students"
+    }
+  },
+  "header": {
+    "1": "STUDENTS",
+    "2": "PLANS",
+    "3": "ENROLLMENTS",
+    "4": "HELP ORDERS",
+    "sair": "leave system"
+  },
+  "botoes": {
+    "adicionar": "create"
+  },
+  "signin": {
+    "form": {
+      "placeholders": {
+        "email": "You E-Email",
+        "senha": "Your secret key"
+      },
+      "buttonName": "Access"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "alunos": {
+    "titulo": "Alunos",
+    "placeholders": {
+      "buscar": "Buscar Alunos"
+    }
+  },
+  "header": {
+    "1": "ALUNOS",
+    "2": "PLANOS",
+    "3": "MATRÍCULAS",
+    "4": "PEDIDOS DE AUXÍLIO",
+    "sair": "sair do sistema"
+  },
+  "botoes": {
+    "adicionar": "cadastrar"
+  },
+  "signin": {
+    "form": {
+      "placeholders": {
+        "email": "Seu E-Email",
+        "senha": "Sua Senha secreta"
+      },
+      "buttonName": "Acessar"
+    }
+  }
+}

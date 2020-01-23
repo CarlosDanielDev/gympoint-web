@@ -5,4 +5,5 @@ export default {
   cinzaEscuro: '#999',
   danger: '#f00',
   name: '#333',
+  textColor: '#444',
 };

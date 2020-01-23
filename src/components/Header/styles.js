@@ -42,7 +42,7 @@ export const Content = styled.div`
   }
 `;
 
-export const MenuLinks = styled(NavLink)`
+export const ItemLink = styled(NavLink)`
   font-weight: bold;
   color: ${colors.cinzaEscuro};
 `;
