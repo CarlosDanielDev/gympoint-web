@@ -63,12 +63,20 @@ export const Profile = styled.div`
     }
 
     button {
-      background: none;
-      border: 0;
-      display: block;
-      margin-top: 2px;
-      font-size: 12px;
-      color: ${colors.default};
+      background: none !important;
+      border: 0 !important;
+      display: block !important;
+      margin-top: 2px !important;
+      font-size: 12px !important;
+      color: ${colors.default} !important;
     }
+  }
+  button {
+    background: #eee !important;
+    color: #444 !important;
+    border-radius: 50% !important;
+    margin: 5px !important;
+    padding: 3px;
+    border: 0;
   }
 `;
