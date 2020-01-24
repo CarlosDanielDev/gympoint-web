@@ -4,16 +4,15 @@ import { Container } from './styles';
 
 function HeaderDefault({ children }) {
   return (
-    <div style={{ marginTop: '30px' }}>
-      <Container>
-        <>{children}</>
-      </Container>
-    </div>
+    <Container style={{ marginTop: '0px', marginBottom: '20px' }}>
+      <>{children}</>
+    </Container>
   );
 }
 
 HeaderDefault.propTypes = {
-  children: PropTypes.element.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.array.isRequired,
 };
 
 export default HeaderDefault;

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './services/i18n';
+import './i18n';
 
 ReactDOM.render(
   <Suspense fallback={<div>Loading...</div>}>

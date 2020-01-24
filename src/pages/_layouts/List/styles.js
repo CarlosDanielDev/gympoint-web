@@ -19,6 +19,7 @@ export const Content = styled.div`
     width: 100%;
     border-radius: 4px;
     margin-top: 10px;
+    border-spacing: 0px;
     background: ${props => props.colors.backgroundForm};
 
     tr {
@@ -35,16 +36,27 @@ export const Content = styled.div`
         color: #666;
         padding: 20px;
         text-align: left;
-      }
-      .editar {
-        font-size: 15px;
-        color: #4d85ee;
-        cursor: pointer;
-      }
-      .deletar {
-        font-size: 15px;
-        color: #de3b3b;
-        cursor: pointer;
+        align-self: center;
+
+        a {
+          text-decoration: none;
+        }
+
+        button {
+          border: 0;
+          background: none;
+        }
+
+        .editar {
+          font-size: 15px;
+          color: #4d85ee;
+          cursor: pointer;
+        }
+        .deletar {
+          font-size: 15px;
+          color: #de3b3b;
+          cursor: pointer;
+        }
       }
     }
     + tr td {

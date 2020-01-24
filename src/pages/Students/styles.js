@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 // import AsyncSelect from 'react-select/async';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin-top: 30px;
+`;
 
 export const SearchInput = styled.input`
   width: 200px;
