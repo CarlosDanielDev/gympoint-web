@@ -3,6 +3,17 @@
     "titulo": "Students",
     "placeholders": {
       "buscar": "Search students"
+    },
+    "table": {
+      "header": {
+        "1": "Name",
+        "2": "Email",
+        "3": "Age"
+      },
+      "body": {
+        "editar": "edit",
+        "apagar": "delete"
+      }
     }
   },
   "header": {
