@@ -39,4 +39,21 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  #back {
+    background: #ccc;
+    border: 0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px;
+    height: 33px;
+    padding: 0 15px;
+    text-align: center;
+    text-transform: capitalize;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
 `;

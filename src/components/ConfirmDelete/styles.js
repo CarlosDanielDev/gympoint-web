@@ -31,7 +31,7 @@ export const Container = styled.div`
     }
 
     .noDelete {
-      background: #4d85ee;
+      background: #ccc;
       color: #fff;
     }
   }

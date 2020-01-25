@@ -46,11 +46,11 @@ export default function Students() {
       customUI: ({ onClose }) => {
         return (
           <ConfirmDelete>
-            <h1>Are you sure?</h1>
+            <h1>{t('alunos.table.alert.delete.message')}</h1>
 
             <div>
               <button className="noDelete" type="button" onClick={onClose}>
-                No
+                {t('alunos.table.alert.delete.1')}
               </button>
               <button
                 className="delete"
@@ -60,7 +60,7 @@ export default function Students() {
                   onClose();
                 }}
               >
-                Yes
+                {t('alunos.table.alert.delete.2')}
               </button>
             </div>
           </ConfirmDelete>

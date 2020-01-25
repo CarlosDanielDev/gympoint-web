@@ -13,7 +13,36 @@
       "body": {
         "editar": "editar",
         "apagar": "apagar"
+      },
+      "alert": {
+        "delete": {
+          "message": "Tem certeza ?",
+          "1": "Não",
+          "2": "Sim"
+        },
+        "created": {
+          "success": "Aluno cadastrado com sucesso!",
+          "fail": "Oh! Oh!, algo deu errado, cerifique sua conexão :)"
+        },
+        "updated": {
+          "success": "Aluno atualizado com sucesso!",
+          "fail": "Oh! Oh!, algo deu errado, cerifique sua conexão :)"
+        }
       }
+    },
+    "form": {
+      "titleEdit": "Editar Aluno",
+      "titleAdd": "Adicionar Aluno",
+      "body": {
+        "1": "Nome Completo",
+        "2": "Endereço de email",
+        "3": "Senha",
+        "4": "Idade",
+        "5": "Peso",
+        "6": "Altura"
+      },
+      "button1": "Salvar",
+      "button2": "Voltar"
     }
   },
   "header": {
