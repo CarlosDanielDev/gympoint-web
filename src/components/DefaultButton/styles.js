@@ -12,4 +12,10 @@ export const ContainerButton = styled.button`
   color: ${props => props.colors.backgroundForm};
   text-align: center;
   text-transform: capitalize;
+
+  svg {
+    color: #fff;
+    size: 2em;
+    margin-right: 5px;
+  }
 `;

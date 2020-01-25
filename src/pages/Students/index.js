@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
@@ -15,15 +15,31 @@ import List from '~/pages/_layouts/List';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
   const [t] = useTranslation();
 
-  useEffect(() => {
-    async function loadStudents() {
-      const response = await api.get('/students');
+  async function loadAllStudents() {
+    try {
+      const response = await api.get('/students', {
+        params: {
+          q: search,
+          page,
+        },
+      });
       setStudents(response.data);
+    } catch (error) {
+      toast.error('Something went wrong');
     }
+  }
+
+  const loadStudents = useCallback(async () => {
+    await loadAllStudents();
+  }, [search, page]);
+
+  useEffect(() => {
     loadStudents();
-  }, []);
+  }, [loadStudents]);
   async function handleClickDelete(id, index) {
     try {
       await api.delete(`/students/${id}`);
@@ -81,7 +97,10 @@ export default function Students() {
               </DefaultButton>
             </Link>
 
-            <SearchInput placeholder={t('alunos.placeholders.buscar')} />
+            <SearchInput
+              placeholder={t('alunos.placeholders.buscar')}
+              onChange={e => setSearch(e.target.value)}
+            />
           </div>
         </>
       </HeaderDefault>

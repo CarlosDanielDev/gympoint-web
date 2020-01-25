@@ -38,7 +38,7 @@
         "2": "Email address",
         "3": "Password",
         "4": "Age",
-        "5": "Weight",
+        "5": "Weight (in kg)",
         "6": "Height"
       },
       "button1": "Save",

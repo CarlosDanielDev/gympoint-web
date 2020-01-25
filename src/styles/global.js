@@ -51,9 +51,17 @@ export default createGlobalStyle`
     padding: 0 15px;
     text-align: center;
     text-transform: capitalize;
+
     a {
       text-decoration: none;
       color: #fff;
+      font-weight: bold;
+
+      svg {
+        color: #FFF;
+        size: 30px;
+        margin-right: 5px;
+      }
     }
   }
 `;
