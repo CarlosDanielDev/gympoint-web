@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import { toast } from 'react-toastify';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -85,6 +86,12 @@ export default function Students() {
     });
   }
 
+  function handlePage(action) {
+    setPage(action === 'back' ? page - 1 : page + 1);
+
+    loadStudents();
+  }
+
   return (
     <Container>
       <HeaderDefault>
@@ -142,6 +149,23 @@ export default function Students() {
             ))}
           </tbody>
         </table>
+        <div>
+          <button
+            type="button"
+            onClick={() => handlePage('back')}
+            disabled={page < 2}
+          >
+            <FaAngleLeft />
+          </button>
+          <span>1</span>
+          <button
+            type="button"
+            onClick={() => handlePage('next')}
+            disabled={!(students.length >= 5)}
+          >
+            <FaAngleRight />
+          </button>
+        </div>
       </List>
     </Container>
   );

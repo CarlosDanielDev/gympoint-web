@@ -63,4 +63,35 @@ export const Content = styled.div`
       border-top: 1px solid #eee;
     }
   }
+
+  div {
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+
+    button {
+      border: 0;
+      background: #ee4d64;
+
+      padding: 5px;
+      border-radius: 4px;
+      margin: 0 5px;
+      cursor: pointer;
+
+      svg {
+        color: #fff;
+      }
+      &:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+    }
+  }
 `;
